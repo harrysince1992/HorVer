@@ -17,6 +17,7 @@ margin-top: 30px;
 #vertical_data{
 width: 400px;
 height: 300px;
+resize: horizontal;
 }
 
 #selectalllink{
@@ -36,4 +37,11 @@ height: 300px;
         font-size: 0.5rem;
     }
 
+    #result{
+        width: 80%;
+    }
+
+    #selectalllink{
+        margin: auto;
+    }
 }
