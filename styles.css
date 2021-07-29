@@ -1,0 +1,39 @@
+#main{
+	height: 90vh;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+p{
+font-weight: bold;
+margin-top: 30px;
+}
+
+#vertical-data + div{
+ margin: 20px auto;
+}
+
+#vertical_data{
+width: 400px;
+height: 300px;
+}
+
+#selectalllink{
+	cursor: pointer;
+	display: block;
+}
+
+
+@media only screen and (max-width: 600px){
+
+    
+    #main{
+        padding: 20px 60px;
+    }
+
+    p{
+        font-size: 0.5rem;
+    }
+
+}
