@@ -1,0 +1,135 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>HorVer</title>
+  <meta name="description" content="A simple application to convert vertical data to delimited data.">
+  <meta name="author" content="Harpreet Singh">
+
+	
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+<style>
+#main{
+	height: 90vh;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+p{
+font-weight: bold;
+margin-top: 30px;
+}
+
+#vertical-data + div{
+ margin: 20px auto;
+}
+
+#vertical_data{
+width: 400px;
+height: 300px;
+}
+
+#selectalllink{
+	cursor: pointer;
+	display: block;
+}
+
+
+
+</style>
+
+</head>
+<body>
+	<div id="main">
+		<h1 class="mb-5 fw-bold">Convert vertical data into horizontal format with delimiter</h1>
+
+		<label for="vertical-data" class="mb-3 fs-2 fw-bold">Put your vertical data here</label>
+		<span id="error" class="text-danger"></span>
+		<textarea id="vertical-data" name="data" rows="15" cols="50"></textarea>
+		<div>
+		<label for="delims">delimited by:</label>
+		<select id="delims">
+			<option value="space">horizontal space</option>
+			<option value=";">semi-colon</option>
+			<option value="," selected>comma</option>
+			<option value=":">colon</option>
+			<option value="tab">tab</option>
+		</select>
+		</div>
+		<input style="width:300px" type="text" id="extras" placeholder="Enter customized delimiter">
+		<button id="convert" class="btn btn-success mt-4" title="convert data">Convert</button>
+		<p class="text-success"></p>
+		<div class="text-center">
+		<textarea id="result" class="text-success" rows="2" cols="100"></textarea>
+		<button id="selectalllink" class="btn btn-primary">Select All</button>
+		</div>
+</div>
+
+
+<footer id="footer" class="text-center text-muted">&copy; Developed by Harpreet Singh</footer>
+
+</body>
+<script>
+	let selectLink = document.getElementById('selectalllink');
+
+document.querySelector('#convert').addEventListener('click', ()=>{
+
+	let data = document.querySelector('textarea').value.trim();
+	let delim = document.querySelector('#delims').value;
+	let custom_delim = document.querySelector('#extras').value;
+
+
+	let splitted = data.split('\n');
+	
+	if(data == ""){
+		document.getElementById('error').innerText = "Below field is required.";
+	}
+
+	if(custom_delim){
+		delim = custom_delim;
+	}
+	
+
+	if(delim == "space"){ delim = " "; }
+	else if(delim == "tab"){ delim = "\t" }
+
+let result = "";
+for(let i = 0; i< splitted.length; i++ ){
+    if(i<splitted.length-1){
+        result += splitted[i] + delim;
+    }
+    else{    
+            result += splitted[i];
+    }
+
+}
+
+
+document.querySelector('p').innerText = "Converted Data";
+document.querySelector('#result').innerText = result;
+document.querySelector('#result').removeAttribute('disabled');
+
+
+});
+
+selectLink.addEventListener('click', (evt)=>{
+		if(selectLink.innerText == "Select All" ){
+		selectLink.innerText = "Unselect All";
+		}
+		else {
+			selectLink.innerText = "Select All";
+			}
+	if(document.querySelector('#result').value != "" && selectLink.innerText == "Unselect All"){ document.querySelector('#result').focus(); document.querySelector('#result').select(); 
+								}
+	evt.preventDefault();
+        });
+selectLink.addEventListener('dblclick', (evt)=>{
+	evt.preventDefault();
+});
+</script>
+</html>
