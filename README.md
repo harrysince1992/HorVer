@@ -21,7 +21,7 @@ a,b,c,d,e,f
 
 You can put any kind of text data that you want to be separated by any delimiter you specify. Some delimiters are available as options. Others you can specify in textbox.
 
-Thank you for using my applications. If you have further ideas to improve this application, Please send me an email on harpreet.singh@sunlife.com
+Thank you for using my application.
 
 ######################################################################################################
 ######################################################################################################
