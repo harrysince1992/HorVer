@@ -5,12 +5,12 @@
 
 HorVer is a simple JavaScript based web application that can convert your data from a vertical format like this:
 
-a
-b
-c
-d
-e
-f
+a\n
+b\n
+c\n
+d\n
+e\n
+f\n
 
 
 To This:
